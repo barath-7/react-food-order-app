@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '../UI/Card';
 import classes from './AvailableMeals.module.css'
 import MealItem from './MealItem/MealItem';
+//require('dotenv').config()
+
+const url = process.env.REACT_APP_BACKEND
+const getData = async () =>{
+  let res = await fetch(url)
+  let data = await res.json()
+  console.log(data)
+}
+
+getData()
 
 const DUMMY_MEALS = [
     {
@@ -31,6 +41,7 @@ const DUMMY_MEALS = [
   ];
 
 const AvailableMeals =() => {
+  //useEffect(()=>{getData()},[])
   return <section className={classes.meals}>
       <Card>
       <ul>
